@@ -10,12 +10,10 @@
  */
 void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int))
 {
-	if (tree == NULL && func == NULL)
+	if (tree == NULL || func == NULL)
 		return;
-	
-	printf("%c ", tree->n);
 
-	func () = preorder;
-	preorder(tree->left);
-	preorder(tree->right);
+	func(tree->n);
+	binary_tree_preorder(tree->left, func);
+	binary_tree_preorder(tree->right, func);
 }
