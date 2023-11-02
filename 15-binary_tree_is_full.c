@@ -1,4 +1,5 @@
 #include "binary_trees.h"
+#include <stdio.h>
 
 /**
  * binary_tree_is_full - function checks if a binary tree is full
@@ -7,18 +8,19 @@
  */
 int binary_tree_is_full(const binary_tree_t *tree)
 {
+	int is_full_left, is_full_right;
+
 	if (tree == NULL)
 		return (0);
 
 	if (tree->left == NULL && tree->right == NULL)
-		return (0);
+		return (1);
 
-	else if ((tree->left) && (tree->right))
-	{
-		return (binary_tree_is_full(tree->left) &&
-			(binary_tree_is_full(tree->right);
-			 }
+	is_full_left = binary_tree_is_full(tree->left);
+	is_full_right = binary_tree_is_full(tree->right);
 
-	else
-		return (-1);
+	if (tree->left && tree->right)
+		return (is_full_left && is_full_right);
+
+	return (0);
 }
